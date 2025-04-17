@@ -1,0 +1,1 @@
+db_path = "Outputs/student_data.db"
