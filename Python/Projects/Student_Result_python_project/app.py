@@ -18,7 +18,6 @@
 
 #print functions
 # from tests import print_table_names,print_column_names
-
 # from logic import display_student_info
 # from logic import test_university_class
 # from logic import display_subjectwise_result
