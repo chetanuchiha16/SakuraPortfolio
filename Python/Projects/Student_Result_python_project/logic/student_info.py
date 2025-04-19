@@ -2,10 +2,11 @@ from models import Student
 from visuals import create_student_report
 import customtkinter as ctk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from models.config import db_path, pdf_dir
 
 def display_student_info(usn, semester, info_text, student_info_graph):
     try:
-        student = Student(usn=usn, semester=semester, db_path="Outputs/student_data.db")
+        student = Student(usn=usn, semester=semester, db_path=db_path)
         
         info_text.configure(state="normal")
         info_text.delete("1.0", ctk.END)
@@ -31,7 +32,7 @@ def display_student_info(usn, semester, info_text, student_info_graph):
         canvas.draw()
         canvas.get_tk_widget().pack(pady=20)
 
-        create_student_report(student, file_path=f"Outputs/PDFs/{student.name}_{semester}_report.pdf")
+        create_student_report(student, file_path=f"{pdf_dir}/{student.name}_{semester}_report.pdf")
 
         info_text.configure(state="disabled")
 

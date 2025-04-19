@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from models.fetch import fetch_student_data
-from models.config import db_path
+from models.config import db_path, img_dir
 
 # Define Student class
 class Student:
@@ -212,7 +212,7 @@ class Student:
         plt.ylabel('Marks')
         plt.title(f'Subject-wise IA and SEE Marks for {self.name}')
         plt.legend()
-        graph_path="Outputs/Images/plot_subject_marks.png"
+        graph_path=f"{img_dir}/plot_subject_marks.png"
         plt.savefig(graph_path)
         #plt.show()
         return fig,graph_path
