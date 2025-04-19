@@ -1,6 +1,6 @@
 import sqlite3
 import pandas as pd
-from models.config import db_path
+from models.config import db_path, file_path
 
 def convert_excel_to_sql(file_path, db_path):
     # Load the Excel file
@@ -33,6 +33,6 @@ def convert_excel_to_sql(file_path, db_path):
 
 # Usage
 convert_excel_to_sql(
-    file_path=r"Inputs\ExcelSheet\result list project.xlsx",
-    db_path="Outputs/student_data.db"
+    file_path = file_path,
+    db_path = db_path
 )
