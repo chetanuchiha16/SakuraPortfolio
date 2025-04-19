@@ -3,7 +3,6 @@
 # import sqlite3
 # import matplotlib.pyplot as plt
 # from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
 # import os
 
 # import customtkinter as ctk
@@ -22,6 +21,8 @@
 # from logic import test_university_class
 # from logic import display_subjectwise_result
 # from logic import display_semesterwise_results
+
+import models.data_prep
 from gui import build_app
     
 widgets = build_app()

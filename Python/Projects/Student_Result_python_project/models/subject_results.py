@@ -40,9 +40,9 @@ class SubjectResult:
         """
         pass_count = sum(1 for student in self.students_data if (student["ia"]>=20 and student["see"]>=18))
         fail_count = self.present_students - pass_count
-        for student in self.students_data:
-            if (student["ia"]<20 and student["see"]<18):
-                print("failed students",student["name"])
+        # for student in self.students_data:
+            # if (student["ia"]<20 and student["see"]<18):
+                # print("failed students",student["name"])
                                               
         return pass_count, fail_count
 
