@@ -2,6 +2,7 @@ import sqlite3
 # Function to fetch data from the database with error handling for missing USN
 from models.config import db_path
 def fetch_student_data(usn, semester, db_path=db_path):
+    print(db_path)
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -52,7 +53,8 @@ def fetch_student_data(usn, semester, db_path=db_path):
         }
 
     except sqlite3.Error as e:
-        print(f"Database error occurred: {e}")
+        print(f"Database error occurred in fetch.py : {e}")
+        print(db_path)
         return None
     
 if(__name__) == ("__main__"):
