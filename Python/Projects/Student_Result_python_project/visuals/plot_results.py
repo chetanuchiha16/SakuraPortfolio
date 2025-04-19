@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
+from models.config import db_path, pdf_dir, img_dir
 # Function to generate and display a chart for SubjectResult class
 def plot_subject_result_performance(subject_result, root):
     fig, ax = plt.subplots()
@@ -16,4 +16,4 @@ def plot_subject_result_performance(subject_result, root):
     canvas.get_tk_widget().pack()
 
     # Save the plot as a PNG image for PDF export
-    fig.savefig("Outputs/Images/subject_result_performance.png")
+    fig.savefig(f"{img_dir}/subject_result_performance.png")

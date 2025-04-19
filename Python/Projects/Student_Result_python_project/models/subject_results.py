@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from models.config import db_path, pdf_dir, img_dir
 # SubjectResult class
 class SubjectResult:
     def __init__(self, subject_code, semester, university):
@@ -97,7 +98,7 @@ class SubjectResult:
         plt.pie(values, labels=categories, autopct='%1.1f%%', startangle=140, 
                 colors=['#ff9999', '#66b3ff', '#99ff99'])
         plt.title(f'Performance Distribution in {self.subject_code}')
-        graph_path="Outputs/Images/performance_pie_chart.png"
+        graph_path=f"{img_dir}/performance_pie_chart.png"
         plt.savefig(graph_path)
         #plt.show()
         return fig,graph_path
@@ -114,7 +115,7 @@ class SubjectResult:
         plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140, 
                 colors=['#66b3ff', '#ffcc99'])
         plt.title(f'Attendance Distribution in {self.subject_code}')
-        graph_path="Outputs/Images/attendance_pie_chart.png"
+        graph_path=f"{img_dir}/attendance_pie_chart.png"
         plt.savefig(graph_path)
         #plt.show()
         return fig,graph_path

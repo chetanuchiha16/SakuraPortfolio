@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import pathlib
-
+from models.config import db_path, pdf_dir, img_dir, logo_path
 # import textwrap
 # from reportlab.lib import colors
 from reportlab.platypus import Image
@@ -15,7 +15,7 @@ from reportlab.pdfgen import canvas
 import pathlib
 # from models import SubjectResult
 # from models.config import db_path
-def create_subject_report(subject_result, file_path="Outputs/PDFs/subject_report.pdf"):
+def create_subject_report(subject_result, file_path=f"{pdf_dir}/subject_report.pdf"):
     """
     Create a PDF report for subject-wise performance with graphs.
     """
@@ -26,7 +26,7 @@ def create_subject_report(subject_result, file_path="Outputs/PDFs/subject_report
     ax.bar(labels, counts, color=['green', 'red'])
     ax.set_title(f"Performance in {subject_result.subject_code}")
     ax.set_ylabel("Number of Students")
-    graph_path = "Outputs/Images/subject_graph.png"
+    graph_path = f"{img_dir}/subject_graph.png"
     plt.savefig(graph_path)
     plt.close()
 
@@ -43,8 +43,8 @@ def create_subject_report(subject_result, file_path="Outputs/PDFs/subject_report
     
     try:
         # Add logo to the top left
-        logo = Image("Inputs/Images/logo.png", width=50, height=50)
-        c.drawImage("Inputs/Images/logo.png", 50, 735, width=50, height=50)
+        logo = Image(logo_path, width=50, height=50)
+        c.drawImage(logo_path, 50, 735, width=50, height=50)
     except Exception as e:
         print(f"Warning: Could not load logo image. {e}")
     

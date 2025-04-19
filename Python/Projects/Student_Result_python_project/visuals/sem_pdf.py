@@ -9,7 +9,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 import pathlib
 from models import SubjectResult
-from models.config import db_path
+from models.config import db_path,pdf_dir,img_dir, logo_path
 
 def generate_sem_pdf(selected_semester, university, semester_subject_mapping, output_path):
     try:
@@ -25,7 +25,7 @@ def generate_sem_pdf(selected_semester, university, semester_subject_mapping, ou
        
         # Add logo
         try:
-            logo = Image("Inputs/Images/logo.png", width=50, height=50)  # Adjust size as needed
+            logo = Image(logo_path, width=50, height=50)  # Adjust size as needed
             elements.append(logo)
         except Exception as e:
             print(f"Warning: Could not load logo image. {e}")

@@ -8,12 +8,13 @@ from fpdf import FPDF
 # from reportlab.lib.pagesizes import A4
 # from reportlab.pdfgen import canvas
 import pathlib
+from models.config import db_path, pdf_dir, img_dir, logo_path
 # from models import SubjectResult
 # from models.config import db_path
 
 from fpdf.enums import XPos, YPos  # Import enums for positioning
 
-def create_toppers_list_pdf(toppers, selected_semester, file_path="Outputs/PDFs/toppers_list.pdf"):
+def create_toppers_list_pdf(toppers, selected_semester, file_path=f"{pdf_dir}/toppers_list.pdf"):
     """
     Generates a PDF for the toppers list.
 

@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
+from models.config import db_path, pdf_dir, img_dir
 # Function to generate and display a chart for University class
 def plot_university_totals(university, root):
     fig, ax = plt.subplots()
@@ -19,5 +19,5 @@ def plot_university_totals(university, root):
     canvas.get_tk_widget().pack()
 
     # Save plot as image for PDF export
-    fig.savefig("Outputs/Images/university_totals.png")
+    fig.savefig(f"{img_dir}/university_totals.png")
     plt.close(fig)  # Close the figure to free memory

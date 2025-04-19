@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
+from models.config import db_path, pdf_dir, img_dir
 # Function to generate and display a chart in Tkinter for Student class
 def plot_student_marks(student, root):
     fig, ax = plt.subplots()
@@ -20,5 +20,5 @@ def plot_student_marks(student, root):
     canvas.get_tk_widget().pack()
 
     # Save plot as image for PDF export
-    fig.savefig("Outputs/Images/student_subject_marks.png")
+    fig.savefig(f"{img_dir}/student_subject_marks.png")
     plt.close(fig)  # Close the figure to free memory

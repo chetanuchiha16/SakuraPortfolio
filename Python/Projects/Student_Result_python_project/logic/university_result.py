@@ -2,10 +2,10 @@ from models import University
 from visuals import create_toppers_list_pdf, create_university_report
 import customtkinter as ctk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from models.config import db_path, pdf_dir, img_dir
 
 def test_university_class(selected_semester, overall_result_text, overall_result_graph, tabview,  show_toppers=False, show_failed=False ):
     try:
-        db_path = "Outputs/student_data.db"
         university = University(db_path=db_path)
         university.add_students(selected_semester)
 
@@ -62,7 +62,7 @@ def test_university_class(selected_semester, overall_result_text, overall_result
             canvas.draw()
             canvas.get_tk_widget().pack(pady=20)
 
-            create_university_report(university, selected_semester, file_path=f"Outputs/PDFs/{selected_semester}_report.pdf")
+            create_university_report(university, selected_semester, file_path=f"{pdf_dir}/{selected_semester}_report.pdf")
 
             # Switch to the "Overall Result" tab
             tabview.set("Overall Result")

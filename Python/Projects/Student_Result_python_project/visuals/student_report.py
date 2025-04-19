@@ -2,8 +2,9 @@ import matplotlib.pyplot as plt
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import pathlib
+from models.config import db_path, pdf_dir, img_dir, logo_path
 
-def create_student_report(student, file_path="Outputs/PDFs/student_report.pdf"):
+def create_student_report(student, file_path=f"{pdf_dir}/student_report.pdf"):
     """
     Create a PDF report for an individual student with graphs, resembling a marks card.
     """
@@ -13,7 +14,7 @@ def create_student_report(student, file_path="Outputs/PDFs/student_report.pdf"):
     ax.set_title(f"Performance of {student.name}")
     ax.set_xlabel("Subjects")
     ax.set_ylabel("Total Marks")
-    graph_path = "Outputs/Images/student_graph.png"
+    graph_path = f"{img_dir}/student_graph.png"
     plt.savefig(graph_path)
     plt.close()
 
@@ -24,7 +25,7 @@ def create_student_report(student, file_path="Outputs/PDFs/student_report.pdf"):
     c.setFont("Helvetica-Bold", 16)
     c.drawString(150, 780, "JSS ACADEMY OF TECHNICAL EDUCATION, BENGALURU")  # Centered title
     try:
-        c.drawImage("Inputs/Images/logo.png", 50, 750, width=50, height=50)  # Add logo on the top-left
+        c.drawImage(logo_path, 50, 750, width=50, height=50)  # Add logo on the top-left
     except Exception as e:
         print(f"Warning: Could not load logo image. {e}")
 

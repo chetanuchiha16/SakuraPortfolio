@@ -3,6 +3,7 @@ import customtkinter as ctk
 from models import University
 from models import SubjectResult
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from models.config import pdf_dir,db_path,img_dir
 # Function to handle subject-wise results
 def display_subjectwise_result(subjectwise_semester_dropdown, subjectwise_subject_dropdown, subjectwise_result_graph, subjectwise_result_text):
     try:
@@ -12,7 +13,7 @@ def display_subjectwise_result(subjectwise_semester_dropdown, subjectwise_subjec
         if not selected_semester or not selected_subject:
             raise ValueError("Please select both semester and subject code.")
 
-        university = University("Outputs/student_data.db")
+        university = University(db_path)
         university.add_students(selected_semester=selected_semester)
 
         subject_result = SubjectResult(selected_subject, selected_semester, university)
@@ -21,7 +22,7 @@ def display_subjectwise_result(subjectwise_semester_dropdown, subjectwise_subjec
         subjectwise_result_text.configure(state="normal")
         subjectwise_result_text.delete("1.0", ctk.END)
         subjectwise_result_text.insert(ctk.END, f"=== Subject-wise Results for {selected_subject} ({selected_semester}) ===\n\n")
-        create_subject_report(subject_result, file_path=f"Outputs/PDFs/subject_report_{selected_semester}_{selected_subject}.pdf")
+        create_subject_report(subject_result, file_path=f"{pdf_dir}/subject_report_{selected_semester}_{selected_subject}.pdf")
         subject_result.display_subject_results(output_widget=subjectwise_result_text)
         subjectwise_result_text.configure(state="disabled")
 

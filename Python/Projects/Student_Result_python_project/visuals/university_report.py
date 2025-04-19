@@ -11,8 +11,9 @@ import pathlib
 # from models import SubjectResult
 # from models.config import db_path
 import matplotlib.pyplot as plt
+from models.config import db_path, pdf_dir, img_dir, logo_path
 
-def create_university_report(university, selected_semester, file_path="Outputs/PDFs/university_report.pdf"):
+def create_university_report(university, selected_semester, file_path=f"{pdf_dir}/university_report.pdf"):
     """
     Create a PDF report for the university's academic performance with graphs.
     """
@@ -23,7 +24,7 @@ def create_university_report(university, selected_semester, file_path="Outputs/P
     ax.set_title("SGPA Distribution")
     ax.set_xlabel("SGPA")
     ax.set_ylabel("Number of Students")
-    graph_path = "Outputs/Images/university_graph.png"
+    graph_path = f"{img_dir}/university_graph.png"
     plt.savefig(graph_path)
     plt.close()
 
@@ -39,8 +40,8 @@ def create_university_report(university, selected_semester, file_path="Outputs/P
     
     try:
         # Add logo to the top left
-        logo = Image("Inputs/Images/logo.png", width=50, height=50)
-        c.drawImage("Inputs/Images/logo.png", 50, 710, width=50, height=50)
+        logo = Image(logo_path, width=50, height=50)
+        c.drawImage(logo_path, 50, 710, width=50, height=50)
     except Exception as e:
         print(f"Warning: Could not load logo image. {e}")
 

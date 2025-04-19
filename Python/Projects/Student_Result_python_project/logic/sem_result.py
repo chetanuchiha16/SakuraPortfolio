@@ -1,6 +1,7 @@
 from models import University, SubjectResult
 from visuals import generate_sem_pdf
 import customtkinter as ctk
+from models.config import db_path, pdf_dir
 
 
 # Function to display semester-wise results
@@ -9,7 +10,7 @@ def display_semesterwise_results(selected_semester, semesterwise_result_table, s
         if not selected_semester:
             raise ValueError("Please select a semester.")
 
-        university = University("Outputs/student_data.db")
+        university = University(db_path)
         university.add_students(selected_semester=selected_semester)
 
         subjects = semester_subject_mapping.get(selected_semester, [])
@@ -142,7 +143,7 @@ def display_semesterwise_results(selected_semester, semesterwise_result_table, s
         for row_index in range(len(subjects) + 3):
             semesterwise_result_table.grid_rowconfigure(row_index, weight=1)
 
-        generate_sem_pdf(selected_semester, university, semester_subject_mapping, output_path=f"Outputs/PDFs/{selected_semester}_results.pdf")
+        generate_sem_pdf(selected_semester, university, semester_subject_mapping, output_path=f"{pdf_dir}/{selected_semester}_results.pdf")
     except Exception as e:
         # Display error message using messagebox
         ctk.messagebox.showerror("Error", str(e))
@@ -153,7 +154,7 @@ def display_semesterwise_results_console(selected_semester, semester_subject_map
         if not selected_semester:
             raise ValueError("Please select a semester.")
 
-        university = University("Outputs/student_data.db")
+        university = University(db_path)
         university.add_students(selected_semester=selected_semester)
 
         subjects = semester_subject_mapping.get(selected_semester, [])
