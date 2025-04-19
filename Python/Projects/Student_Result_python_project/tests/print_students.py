@@ -1,9 +1,10 @@
 from models.fetch import fetch_student_data
 from models import Student
 import sqlite3
+from models.config import db_path
 
 #temp function to print Student class  dat
-def print_student_data_by_usn(usn, db_path="Outputs/student_data.db"):
+def print_student_data_by_usn(usn, db_path=db_path):
     try:
         # Get list of semesters from the database (filter for tables that start with 'SEM')
         conn = sqlite3.connect(db_path)

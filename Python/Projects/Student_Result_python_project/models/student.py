@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 from models.fetch import fetch_student_data
+from models.config import db_path
 
 # Define Student class
 class Student:
-    def __init__(self, usn, semester, db_path="Outputs/student_data.db"):
+    def __init__(self, usn, semester, db_path=db_path):
         self.db_path = db_path
         self.semester=semester
         student_info = fetch_student_data(usn, semester, self.db_path)

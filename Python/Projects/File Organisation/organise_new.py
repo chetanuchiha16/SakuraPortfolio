@@ -2,6 +2,10 @@ import pathlib
 import shutil
 from pprint import pprint
 dire = pathlib.Path("Organised_Folder")
+
+base_path = pathlib.Path(__file__).resolve().parent
+dire = base_path / "./Organised_Folder"
+
 folders = {folder.name: folder for folder in dire.iterdir() if folder.is_dir()}
 files = {file.name: file for file in dire.iterdir() if file.is_file()}
 # pprint(folders)

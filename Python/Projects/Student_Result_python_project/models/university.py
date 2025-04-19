@@ -1,8 +1,9 @@
 import sqlite3
 import matplotlib.pyplot as plt
 from models import Student
+from models.config import db_path
 class University:
-    def __init__(self, db_path="Outputs/student_data.db"):
+    def __init__(self, db_path=db_path):
         self.db_path = db_path
         self.students = []
 

@@ -1,7 +1,8 @@
 import sqlite3
+from models.config import db_path
 
 #temp function to print table names
-def print_table_names(db_path="Outputs/student_data.db"):
+def print_table_names(db_path=db_path):
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -25,7 +26,7 @@ def print_table_names(db_path="Outputs/student_data.db"):
 
 #temp function to print table columns
 
-def print_column_names(db_path="Outputs/student_data.db"):
+def print_column_names(db_path=db_path):
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
