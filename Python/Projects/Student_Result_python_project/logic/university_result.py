@@ -24,7 +24,7 @@ def test_university_class(selected_semester, overall_result_text, overall_result
                 overall_result_text.insert(ctk.END, f"{i}. USN: {topper['usn']}\n Name: {topper['name']}\nTotal marks: {topper['total_marks']} \tPercentage: {topper['percentage']:.2f}%\n sgpa: {topper['sgpa']:.2f}%\tcgpa: {topper['cgpa']:.2f}%\n\n")
             overall_result_text.insert(ctk.END, "-" * 50 + "\n")
             # Create PDF for toppers
-            create_toppers_list_pdf(toppers, selected_semester, file_path=f"Outputs/PDFs/{selected_semester}_toppers_list.pdf")
+            create_toppers_list_pdf(toppers, selected_semester, file_path=f"{pdf_dir}/{selected_semester}_toppers_list.pdf")
         elif show_failed:
             # Display failed students
             overall_result_text.insert(ctk.END, f"=== Failed Students List for Semester: {selected_semester} ===\n\n")

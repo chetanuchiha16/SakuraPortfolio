@@ -22,7 +22,7 @@ def display_subjectwise_result(subjectwise_semester_dropdown, subjectwise_subjec
         subjectwise_result_text.configure(state="normal")
         subjectwise_result_text.delete("1.0", ctk.END)
         subjectwise_result_text.insert(ctk.END, f"=== Subject-wise Results for {selected_subject} ({selected_semester}) ===\n\n")
-        create_subject_report(subject_result, file_path=f"{pdf_dir}/subject_report_{selected_semester}_{selected_subject}.pdf")
+        create_subject_report(subject_result, file_path=f"{pdf_dir}\\subject_report_{selected_semester}_{selected_subject}.pdf")
         subject_result.display_subject_results(output_widget=subjectwise_result_text)
         subjectwise_result_text.configure(state="disabled")
 
